@@ -540,32 +540,40 @@ grovio-content-skill/
 │   └── platform-guide.md               ← Platform-specific content rules
 │
 └── examples/
-    └── maruti-suzuki-linkedin/
+    └── duolingo-twitter/
         ├── README.md                    ← Context and walkthrough
-        └── output.md                   ← Full generated output (49/60)
+        └── output.md                   ← Full generated output (55/60)
 ```
 
 ---
 
 ## Example Output
 
-**Maruti Suzuki → LinkedIn Thought Leadership** (49/60):
+**Duolingo → Twitter Viral Content** (55/60 — 23/26 triggers fired):
 
-> *India will not electrify the way the headlines say it will.*
+> *you've been saying "i'll start tomorrow" for 47 days*
 >
-> *That's not pessimism. That's what you learn when 29 million Indian families trust you with their first car.*
+> *duo has been watching*
 >
-> *→ 72% of India's EV sales happen in just 10 cities*
-> *→ CNG outsells EVs in India 4:1*
-> *→ Public charging covers less than 12% of India's districts...*
-
-**Grovio AI → LinkedIn Thought Leadership** (52/60 — highest ever produced):
-
-> *Most companies are using AI to do old marketing faster.*
+> *duo is patient*
 >
-> *That's the wrong race.*
+> *duo is also keeping count*
 
-→ Full outputs: [`examples/maruti-suzuki-linkedin/output.md`](examples/maruti-suzuki-linkedin/output.md)
+**Cultural Hijack Template** (reusable engine discovered):
+
+> *you watched 14 episodes of [K-drama] this week*
+>
+> *you have not done one duolingo lesson*
+>
+> *the main character would be so disappointed in you*
+
+**Grovio AI → LinkedIn Thought Leadership** (54/60 — full psychology stack test):
+
+> *I wasted 800 hours last year doing "marketing."*
+>
+> *None of it was actually marketing. It was coordination.*
+
+→ Full output with all 5 variants + annotations: [`examples/duolingo-twitter/output.md`](examples/duolingo-twitter/output.md)
 
 ---
 
