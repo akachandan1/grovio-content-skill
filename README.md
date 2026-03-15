@@ -95,9 +95,25 @@ The master skill detects your content type and activates the right specialist en
     │                              Press releases · Media pitch emails
     │                              Byline pitches · Podcast pitches
     │
-    └── /grovio-brand-memory  ←── Persistent brand intelligence
-                                   Save/load brand profiles across sessions
-                                   Skip re-crawling · Brand history log
+    ├── /grovio-brand-memory  ←── Persistent brand intelligence
+    │                              Save/load brand profiles across sessions
+    │                              Skip re-crawling · Brand history log
+    │
+    ├── /grovio-voc           ←── Voice of Customer intelligence
+    │                              Mine G2/Capterra/Reddit/reviews for customer language
+    │                              Pain language → outcome language → objection language
+    │                              40-70% conversion lift from customer-derived copy
+    │
+    ├── /grovio-campaign      ←── Multi-channel campaign orchestration
+    │                              Ignition → Activation → Close phases
+    │                              Channel sequencing logic (PR first, organic before paid)
+    │                              Full asset production list + metrics dashboard
+    │
+    └── /grovio-strategy      ←── Content strategy & 90-day roadmap
+                                   Content pillar map (3–5 owned topics)
+                                   Category Entry Point matrix (Byron Sharp)
+                                   Competitor whitespace · Channel strategy by stage
+                                   Week-by-week 90-day roadmap + priority stack
 ```
 
 ---
@@ -274,6 +290,9 @@ Claude remembers all the brand intelligence from the skill run — follow-up pro
 | `analyze`, `audit`, `performance` | content audit, performance, what's working | **grovio-analyze** |
 | `pr`, `press`, `media`, `pitch` | press release, media pitch, byline | **grovio-pr** |
 | `brand-memory`, `memory` | save brand, load brand, brand profile | **grovio-brand-memory** |
+| `voc`, `voice-of-customer`, `reviews` | customer language, review mining, VoC | **grovio-voc** |
+| `campaign`, `launch`, `multi-channel` | product launch, campaign orchestration | **grovio-campaign** |
+| `strategy`, `roadmap`, `pillars` | content strategy, 90-day roadmap | **grovio-strategy** |
 
 **Goal keyword auto-detection:** The master skill reads your goal text and routes correctly even if the platform argument is ambiguous.
 
@@ -386,6 +405,32 @@ One of the most important distinctions in social content:
 - **Campaign log:** Automatic history of all content generated through the system
 - **Compare:** Side-by-side brand DNA comparison for competitive positioning
 
+### `/grovio-voc` — Voice of Customer Intelligence
+- **Sources:** G2, Capterra, Trustpilot, Reddit, App Store, Product Hunt, support tickets
+- **5 language layers:** Pain language → Desired outcome → Switching reasons → Objection language → Recommendation language
+- **Deliverables:** Ready-to-use headline candidates, CTA candidates, objection copy blocks, competitor differentiation angles
+- **Brand language audit:** Side-by-side table of what the brand says vs what customers say — with recommended swaps
+- **Research backing:** Joanna Wiebe / Copy Hackers — customer language verbatim produces 40–70% conversion lift
+- **Persistent storage:** Saved to `~/.claude/brands/[slug]/voc-dictionary.md` for reuse across sessions
+
+### `/grovio-campaign` — Multi-Channel Campaign Orchestration
+- **Campaign types:** Product launch · Feature launch · Awareness · Lead gen · Event · Re-engagement · Content series
+- **3-phase architecture:** Ignition (PR first → organic social → warm email) → Activation (landing page → paid → nurture → retargeting) → Close (urgency posts → final email → hard retargeting)
+- **Channel sequencing logic:** Why PR fires first, organic before paid, warm list before cold — each with strategic rationale
+- **Full asset production list:** Priority 1–4 assets with the correct `/grovio-*` skill to invoke for each
+- **Messaging evolution:** How the core message must shift across each phase as audience awareness level changes
+- **Metrics dashboard:** Per-phase KPIs and minimum viable result definition
+
+### `/grovio-strategy` — Content Strategy & 90-Day Roadmap
+- **Content pillar map:** 3–5 owned topic areas with audience relevance, business link, whitespace, SEO opportunity
+- **Category Entry Point matrix:** All situations/moments where audience enters the category (Byron Sharp)
+- **Competitor whitespace analysis:** What competitors own vs what's unclaimed — per named competitor
+- **JTBD alignment:** Functional + emotional + social job dimensions mapped to content types
+- **Channel strategy by stage:** Early / Growth / Scale — Tier 1/2/3 channels with cadence and upgrade conditions
+- **90-day roadmap:** Week-by-week plan with priority stack ("If you could only do 5 things, do these")
+- **Brand/activation balance check:** Flags over-indexing on activation content (Binet & Field 60/40 rule)
+- **Content → revenue logic map:** Every content type mapped to funnel role, leading metric, and lagging metric
+
 ---
 
 ## The Psychology Engine
@@ -481,8 +526,14 @@ grovio-content-skill/
 │   │   └── SKILL.md                     ← Content performance intelligence
 │   ├── grovio-pr/
 │   │   └── SKILL.md                     ← Press releases, media pitches
-│   └── grovio-brand-memory/
-│       └── SKILL.md                     ← Persistent brand intelligence across sessions
+│   ├── grovio-brand-memory/
+│   │   └── SKILL.md                     ← Persistent brand intelligence across sessions
+│   ├── grovio-voc/
+│   │   └── SKILL.md                     ← Voice of Customer mining (reviews → customer language)
+│   ├── grovio-campaign/
+│   │   └── SKILL.md                     ← Multi-channel campaign orchestration
+│   └── grovio-strategy/
+│       └── SKILL.md                     ← Content strategy, pillars, 90-day roadmap
 │
 ├── docs/
 │   ├── psychology-framework.md          ← Full 25 triggers + all frameworks reference

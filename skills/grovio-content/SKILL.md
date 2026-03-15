@@ -60,9 +60,12 @@ Before doing anything else, read the platform/type argument and goal, and determ
 | `analyze`, `audit`, `performance`, `report` | content audit, performance analysis, what's working | **grovio-analyze** |
 | `pr`, `press`, `media`, `pitch`, `journalist` | press release, media pitch, byline, podcast pitch | **grovio-pr** |
 | `brand-memory`, `memory`, `save-brand`, `load-brand` | save brand, load brand, brand profile | **grovio-brand-memory** |
+| `voc`, `voice-of-customer`, `reviews`, `customer-language` | customer language, review mining, VoC | **grovio-voc** |
+| `campaign`, `launch-campaign`, `multi-channel` | product launch, campaign orchestration, sequenced campaign | **grovio-campaign** |
+| `strategy`, `content-strategy`, `roadmap`, `pillars` | content strategy, 90-day roadmap, content pillars | **grovio-strategy** |
 
 **Goal keyword detection (when platform is ambiguous):**
-- Contains "ad", "ads", "paid", "campaign", "convert" → **grovio-ads**
+- Contains "ad", "ads", "paid", "convert" → **grovio-ads**
 - Contains "newsletter", "email", "sequence", "drip" → **grovio-email**
 - Contains "reel", "video", "script", "tiktok", "short" → **grovio-video**
 - Contains "meme", "viral", "funny", "format", "trending" → **grovio-meme**
@@ -74,6 +77,9 @@ Before doing anything else, read the platform/type argument and goal, and determ
 - Contains "analyze", "audit", "performance", "what's working" → **grovio-analyze**
 - Contains "press", "pr", "media", "journalist", "pitch", "podcast guest" → **grovio-pr**
 - Contains "save brand", "load brand", "brand memory", "remember brand" → **grovio-brand-memory**
+- Contains "voc", "voice of customer", "reviews", "customer language", "review mining" → **grovio-voc**
+- Contains "campaign", "product launch", "launch plan", "multi-channel campaign" → **grovio-campaign**
+- Contains "strategy", "content strategy", "90-day", "roadmap", "content pillars" → **grovio-strategy**
 - Default for `linkedin`, `twitter`, `instagram` → **grovio-social**
 
 **Announce routing before proceeding:**
