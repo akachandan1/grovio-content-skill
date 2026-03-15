@@ -75,40 +75,102 @@ Version 2 introduces a **routing architecture**. The master skill detects your c
 
 ## Quick Start
 
-### Prerequisites
+### Step 1 — Install Claude Code
 
-- [Claude Code](https://claude.ai/code) installed
-- Skills directory at `~/.claude/skills/`
-
-### Installation
+Claude Code is Anthropic's official CLI. It runs in your terminal and is what powers these skills.
 
 ```bash
-# Clone the repo
-git clone https://github.com/akachandan1/grovio-content-skill.git
+# Install via npm
+npm install -g @anthropic-ai/claude-code
 
-# Copy all skills to your Claude skills directory
-cp -r grovio-content-skill/skills/grovio-content ~/.claude/skills/grovio-content
-cp -r grovio-content-skill/skills/grovio-social ~/.claude/skills/grovio-social
-cp -r grovio-content-skill/skills/grovio-ads ~/.claude/skills/grovio-ads
-cp -r grovio-content-skill/skills/grovio-email ~/.claude/skills/grovio-email
-cp -r grovio-content-skill/skills/grovio-video ~/.claude/skills/grovio-video
-cp -r grovio-content-skill/skills/grovio-meme ~/.claude/skills/grovio-meme
+# Verify installation
+claude --version
 ```
 
-Or copy everything in one command:
+> **New to Claude Code?** Full setup guide at [claude.ai/code](https://claude.ai/code)
+
+---
+
+### Step 2 — Install the Skills
+
 ```bash
+# Clone this repo
+git clone https://github.com/akachandan1/grovio-content-skill.git
+
+# Copy all 6 skills to your Claude skills directory
 cp -r grovio-content-skill/skills/. ~/.claude/skills/
 ```
 
+That's it. No configuration, no API keys beyond your Claude Code session, no package installs.
+
+**Verify the skills are installed:**
+```bash
+ls ~/.claude/skills/ | grep grovio
+# Should show: grovio-content  grovio-social  grovio-ads  grovio-email  grovio-video  grovio-meme
+```
+
+---
+
+### Step 3 — Open Claude Code
+
+```bash
+# Navigate to your project directory (or anywhere)
+cd ~/your-project
+
+# Launch Claude Code
+claude
+```
+
+You'll see the Claude Code prompt. Skills are automatically available — no additional setup needed.
+
+---
+
+### Step 4 — Run Your First Command
+
+Type a slash command directly in the Claude Code prompt:
+
+```
+/grovio-content https://stripe.com linkedin thought-leadership
+```
+
+Claude will:
+1. Detect the content type (LinkedIn post → routes to `grovio-social`)
+2. Crawl the Stripe website and extract brand intelligence
+3. Pull their Twitter/social history and audit past content
+4. Map competitor whitespace
+5. Generate 5 LinkedIn variants with full psychological scoring
+6. Output a ranked package: #1 Publish / #2 A/B / #3 Reserve
+
+---
+
+### How Skills Work in Claude Code
+
+Claude Code skills are **prompt files** stored in `~/.claude/skills/`. When you type `/skill-name`, Claude Code loads that skill's instructions and executes them in the conversation.
+
+```
+~/.claude/skills/
+└── grovio-content/
+    └── SKILL.md    ← Claude reads this when you type /grovio-content
+```
+
+**Key things to know:**
+- Skills activate automatically — just type the slash command
+- No separate servers or processes to run
+- Skills can call web tools (fetch URLs, search the web) during execution
+- Output appears directly in your Claude Code session
+- You can type follow-up messages to refine or iterate on any output
+
+---
+
 ### Usage
 
-#### Option A — Use the Master Orchestrator (auto-routing)
+#### Option A — Master Orchestrator (recommended for new users)
+
+The master skill auto-detects your content type and routes to the right specialist:
 
 ```
 /grovio-content <brand_url> <platform_or_type> <goal> [--voice brand|founder]
 ```
-
-The master skill reads your input, announces the routing decision, runs brand intelligence, and activates the right specialist.
 
 ```
 /grovio-content https://stripe.com linkedin thought-leadership
@@ -119,17 +181,50 @@ The master skill reads your input, announces the routing decision, runs brand in
 /grovio-content https://vercel.com reels product-demo --voice founder
 ```
 
+**What `--voice` does:** Switches between brand account voice (formal, social-proof heavy) and founder personal account voice (story-driven, first-person, 3-5x more organic reach on LinkedIn/Twitter).
+
 #### Option B — Invoke a Specialist Directly
 
-Skip routing and go straight to the specialist:
+If you already know what you need, skip routing:
 
 ```
 /grovio-social <url> <platform> <goal> [--voice brand|founder]
-/grovio-ads <url> <platform> <goal>
-/grovio-email <url> <type> <goal>
-/grovio-video <url> <platform> <goal>
-/grovio-meme <url> <platform> <topic>
+/grovio-ads    <url> <platform> <goal>
+/grovio-email  <url> <type>     <goal>
+/grovio-video  <url> <platform> <goal>
+/grovio-meme   <url> <platform> <topic>
 ```
+
+**Examples:**
+```
+/grovio-social https://linear.app linkedin thought-leadership --voice founder
+/grovio-ads https://grovio.ai google-ad free-trial-campaign
+/grovio-email https://notion.so newsletter weekly-digest
+/grovio-video https://figma.com reels product-demo
+/grovio-meme https://vercel.com twitter devtools-culture
+```
+
+---
+
+### Iterating on Output
+
+After a skill runs, you can keep the conversation going:
+
+```
+# Ask for a specific variant
+"Give me variant 3 rewritten with a stronger hook"
+
+# Change the angle
+"Redo this as a founder confession instead of a data drop"
+
+# Adapt to another platform
+"Now adapt the #1 variant for Twitter as a 7-tweet thread"
+
+# Request more content
+"Generate 3 more variants focused on the fear trigger"
+```
+
+Claude remembers all the brand intelligence from the skill run — follow-up prompts are instant, no re-crawling needed.
 
 ---
 
