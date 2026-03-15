@@ -290,8 +290,6 @@ grovio-content-skill/
         └── output.md                   ← Full generated output (49/60)
 ```
 
-> **Note:** The legacy `skill/SKILL.md` file is kept for backward compatibility. New installations should use the `skills/` directory.
-
 ---
 
 ## Example Output
