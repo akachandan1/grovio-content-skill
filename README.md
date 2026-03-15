@@ -7,19 +7,19 @@
 
 ## What This Is
 
-A Claude Code skill that transforms any brand URL into a full content intelligence system.
+A Claude Code skill system that transforms any brand URL into a full content intelligence engine — across every content format and channel.
 
-Give it a brand website + platform + goal. It will:
+Give it a brand website + channel + goal. It will:
 
-1. **Crawl the brand's website** — extract positioning, voice, vocabulary, values
-2. **Pull their social media history** — audit what's worked, what hasn't, what triggers they're missing
+1. **Crawl the brand's website** — extract positioning, voice, vocabulary, differentiators
+2. **Pull their social media history** — audit what worked, what didn't, which triggers they're missing
 3. **Map competitor whitespace** — find angles nobody is owning
-4. **Build an audience psychology profile** — ELM involvement, Fogg model, top triggers
+4. **Build an audience psychology profile** — ELM involvement, Fogg model, top 5 triggers
 5. **Gather real-time trend intelligence** — trending angles, saturation alerts, data points
-6. **Select the optimal strategy** — funnel stage + emotion + 3-trigger stack + narrative framework
-7. **Generate 5 content variants** — each using a different psychological entry point
+6. **Route to the right specialist engine** — social, ads, email, video, or meme
+7. **Generate 5+ content variants** — each with a different psychological entry point
 8. **Score every variant on 6 dimensions** — composite score out of 60
-9. **Produce a ranked output package** — #1 Publish / #2 A/B Test / #3 Reserve + optimization notes
+9. **Produce a ranked output package** — #1 Publish / #2 A/B / #3 Reserve + optimization notes
 
 **The output is not content. It's behavior-engineered content with a full psychological audit.**
 
@@ -31,11 +31,45 @@ Every piece of content must simultaneously hit three brain systems:
 
 | Brain System | Needs | Content Layer |
 |---|---|---|
-| Emotional brain | Feeling, story, identity | Narrative + emotional trigger |
-| Social brain | Belonging, proof, norms | Social trigger + tribe signal |
-| Rational brain | Logic, value, evidence | Utility + credibility |
+| Emotional brain (Limbic) | Feeling, story, identity | Narrative + emotional trigger |
+| Social brain (Prefrontal) | Belonging, proof, norms | Social trigger + tribe signal |
+| Rational brain (Neocortex) | Logic, value, evidence | Utility + credibility |
 
-Content that hits one or two of these is mediocre. Content that hits all three spreads.
+Hit 1 = ignored. Hit 2 = engaged. Hit all 3 = shared.
+
+---
+
+## Architecture: Path B — Master Orchestrator + Specialist Sub-Skills
+
+Version 2 introduces a **routing architecture**. The master skill detects your content type and activates the right specialist engine — each with deep, format-native knowledge.
+
+```
+/grovio-content  ←── Master Orchestrator
+    │                 Brand intelligence + auto-routing
+    │
+    ├── /grovio-social   ←── Social posts, threads, carousels
+    │                        LinkedIn · Twitter/X · Instagram · Threads
+    │                        Brand voice vs Founder voice distinction
+    │
+    ├── /grovio-ads      ←── Paid advertising copy
+    │                        Google Search · Meta · LinkedIn Ads · YouTube
+    │                        TOF / MOF / BOF / Retargeting logic
+    │                        Platform character limits enforced
+    │
+    ├── /grovio-email    ←── Email & newsletter content
+    │                        Cold outreach · Nurture sequences · Newsletters
+    │                        Welcome · Re-engagement · Conversion emails
+    │
+    ├── /grovio-video    ←── Video scripts
+    │                        Reels · TikTok · YouTube Shorts · LinkedIn Video
+    │                        YouTube long-form · Pre-roll
+    │                        Timestamp-by-timestamp format
+    │
+    └── /grovio-meme     ←── Memes & viral content
+                             Classic format library (Drake, Expanding Brain, etc.)
+                             Text-only viral posts · Trend-jacking framework
+                             Brand-meme voice calibration
+```
 
 ---
 
@@ -50,115 +84,123 @@ Content that hits one or two of these is mediocre. Content that hits all three s
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/grovio-content-skill.git
+git clone https://github.com/akachandan1/grovio-content-skill.git
 
-# Copy skill to your Claude skills directory
-cp -r grovio-content-skill/skill ~/.claude/skills/grovio-content
+# Copy all skills to your Claude skills directory
+cp -r grovio-content-skill/skills/grovio-content ~/.claude/skills/grovio-content
+cp -r grovio-content-skill/skills/grovio-social ~/.claude/skills/grovio-social
+cp -r grovio-content-skill/skills/grovio-ads ~/.claude/skills/grovio-ads
+cp -r grovio-content-skill/skills/grovio-email ~/.claude/skills/grovio-email
+cp -r grovio-content-skill/skills/grovio-video ~/.claude/skills/grovio-video
+cp -r grovio-content-skill/skills/grovio-meme ~/.claude/skills/grovio-meme
+```
+
+Or copy everything in one command:
+```bash
+cp -r grovio-content-skill/skills/. ~/.claude/skills/
 ```
 
 ### Usage
 
-Open Claude Code and run:
+#### Option A — Use the Master Orchestrator (auto-routing)
 
 ```
-/grovio-content <brand_website_url> <platform> <topic_or_goal>
+/grovio-content <brand_url> <platform_or_type> <goal> [--voice brand|founder]
 ```
 
-**Examples:**
+The master skill reads your input, announces the routing decision, runs brand intelligence, and activates the right specialist.
+
 ```
 /grovio-content https://stripe.com linkedin thought-leadership
-/grovio-content https://notion.so twitter product-launch
-/grovio-content https://linear.app email nurture-sequence
-/grovio-content https://figma.com instagram brand-awareness
-/grovio-content https://hubspot.com blog seo-content
-/grovio-content https://yourcompany.com all campaign-launch
+/grovio-content https://notion.so twitter product-launch --voice founder
+/grovio-content https://linear.app newsletter onboarding-sequence
+/grovio-content https://grovio.ai meta-ads free-trial-campaign
+/grovio-content https://figma.com meme design-culture
+/grovio-content https://vercel.com reels product-demo --voice founder
 ```
 
-**Supported platforms:** `linkedin` | `twitter` | `instagram` | `email` | `blog` | `all`
+#### Option B — Invoke a Specialist Directly
 
-**Output:** Saved automatically to `GROVIO-CONTENT-[BRAND]-[DATE].md` in your working directory.
-
----
-
-## Repository Structure
+Skip routing and go straight to the specialist:
 
 ```
-grovio-content-skill/
-├── README.md                        ← You are here
-├── LICENSE                          ← MIT
-├── skill/
-│   └── SKILL.md                     ← The Claude Code skill file
-├── docs/
-│   ├── psychology-framework.md      ← Full 25 triggers + all frameworks reference
-│   └── platform-guide.md            ← Platform-specific content rules
-└── examples/
-    └── maruti-suzuki-linkedin/
-        ├── README.md                ← Context and walkthrough
-        └── output.md                ← Full generated output
+/grovio-social <url> <platform> <goal> [--voice brand|founder]
+/grovio-ads <url> <platform> <goal>
+/grovio-email <url> <type> <goal>
+/grovio-video <url> <platform> <goal>
+/grovio-meme <url> <platform> <topic>
 ```
 
 ---
 
-## The 8-Phase Pipeline
+## Routing Table
 
-```
-Phase 1: Brand Intelligence Gathering
-  ├── Website crawl (7 key pages via Firecrawler)
-  ├── Social media audit (via XPOZ connector — Twitter, Instagram, LinkedIn)
-  └── Competitor content mapping + whitespace detection
+| Platform / Type | Goal Signals | Specialist Activated |
+|---|---|---|
+| `linkedin`, `twitter`, `instagram`, `threads` | post, thread, carousel, thought-leadership | **grovio-social** |
+| `linkedin-ad`, `meta-ad`, `google-ad`, `youtube-ad`, `paid` | ad copy, campaign, CPC, conversion | **grovio-ads** |
+| `email`, `newsletter`, `nurture`, `sequence`, `drip` | email, newsletter, onboarding, re-engagement | **grovio-email** |
+| `reels`, `tiktok`, `youtube-shorts`, `video` | video, script, reel, short-form | **grovio-video** |
+| `meme`, `viral`, `meme-content` | meme, viral, humor, trending format | **grovio-meme** |
 
-Phase 2: Brand Voice DNA Profile
-  ├── Voice archetype identification
-  ├── Tone spectrum mapping (formal↔casual, safe↔bold, etc.)
-  ├── Vocabulary fingerprint extraction
-  └── Identity signal analysis
+**Goal keyword auto-detection:** The master skill also reads your goal text — "ad copy", "newsletter", "video script", "meme" — and routes correctly even if the platform argument is ambiguous.
 
-Phase 3: Audience Psychology Map
-  ├── ELM involvement level (high/medium/low → content format routing)
-  ├── Fogg Behavior Model assessment (Motivation × Ability × Trigger)
-  ├── Top 5 psychological triggers for this audience
-  └── SDT needs mapping (Autonomy, Competence, Relatedness)
+---
 
-Phase 4: Content Intelligence
-  ├── Real-time trend scoring (rising/peak/declining)
-  ├── Saturation alerts (what to avoid)
-  ├── Contrarian angles (unpopular truths)
-  └── Fresh data points for authority content
+## The `--voice` Flag (Social Content)
 
-Phase 5: Content Strategy Selection
-  ├── Funnel stage detection (Awareness → Loyalty)
-  ├── Primary + secondary emotion selection
-  ├── 3-trigger stack selection (from 25 triggers library)
-  └── Narrative framework selection (AIDA / PAS / StoryBrand / Contrarian / Data Drop / etc.)
+One of the most important distinctions in social content:
 
-Phase 6: Content Generation Engine
-  ├── 5 variants minimum per platform
-  ├── Platform-native formatting (LinkedIn / Twitter / Instagram / Email / Blog)
-  ├── Hook-first construction
-  └── Fogg completion check per variant
+| Flag | When to Use | Trigger Stack | Reach |
+|---|---|---|---|
+| `--voice brand` | Company page, product news, formal announcements | Social Proof, Authority, Bandwagon | Standard |
+| `--voice founder` | Thought leadership, building-in-public, stories, opinions | Liking, Reciprocity, Identity Signaling | 3-5x higher organic reach on LinkedIn/Twitter |
 
-Phase 7: Psychological Scoring Engine
-  ├── Trigger Potency (0-10)
-  ├── Emotional Resonance (0-10)
-  ├── Brand Voice Fidelity (0-10)
-  ├── Originality (0-10)
-  ├── Utility (0-10)
-  └── Virality Potential (0-10) → Composite /60
+**Auto-detect rule:** Goals containing "thought-leadership", "opinion", "building-in-public", or "story" default to founder voice unless overridden.
 
-Phase 8: Final Output Package
-  ├── #1 PUBLISH (highest scored variant + rationale)
-  ├── #2 A/B TEST (variant to split test)
-  ├── #3 RESERVE (scenario-specific usage)
-  ├── Full scoring matrix
-  ├── Optimization notes
-  └── Next 5 content angle suggestions
-```
+---
+
+## Specialist Capabilities
+
+### `/grovio-social` — Social Content
+- **Platforms:** LinkedIn · Twitter/X · Instagram · Threads
+- **Formats:** Single post · Thread · Carousel (slide-by-slide) · Story caption
+- **Voice:** Brand account vs Founder personal account (separate logic)
+- **Frameworks:** Contrarian · Data Drop · Founder Story · Framework Post · Prediction
+- **Posting guide:** Best days, times, and format bias per platform
+
+### `/grovio-ads` — Ad Copy
+- **Google Search:** Enforces 30-char headline / 90-char description limits, A/B variants per position
+- **Meta (Facebook/Instagram):** 125-char primary text hook, headline, description, CTA button text
+- **LinkedIn Ads:** Sponsored content + Message Ads (InMail), role-specific personalization
+- **YouTube:** Pre-roll (15-30 sec) and bumper (6 sec non-skippable) scripts
+- **Funnel logic:** TOF · MOF · BOF · Retargeting — each with different trigger stacks
+- **Always outputs:** 3 primary variants + retargeting variant + objection-handling variant
+
+### `/grovio-email` — Email & Newsletter
+- **Email vs Newsletter distinction:** Treated as fundamentally different products with different logic
+- **Email types:** Cold outreach · Welcome · Nurture sequence (5-7 emails) · Conversion · Re-engagement (3-step)
+- **Newsletter:** Digest format with Big Idea + Curated Links + Resource + Personal close
+- **Subject lines:** Always provides A/B variant (curiosity-gap vs benefit-forward)
+- **Sequence architecture:** Day-by-day map with job + CTA per email
+
+### `/grovio-video` — Video Scripts
+- **Short-form:** Reels, TikTok, YouTube Shorts, LinkedIn Video — timestamp-by-timestamp
+- **Format:** `[SECOND X-Y] VISUAL: / SPOKEN: / ON-SCREEN TEXT:` — writes for audio-off first
+- **YouTube long-form:** Full script with open loop hook, retention checkpoints, pattern interrupt notes
+- **Outputs:** Primary script + 2-3 hook A/B variants + thumbnail concepts + production notes
+- **Retention strategy:** Re-hook moments, pattern interrupts, completion rate optimization
+
+### `/grovio-meme` — Memes & Viral Content
+- **Format library:** Drake · Expanding Brain · Distracted Boyfriend · This Is Fine · Surprised Pikachu · Two Buttons · Expectation vs Reality · and more
+- **Text-only viral:** Progression posts, "Nobody:" format, "The thing everyone feels but nobody says"
+- **Trend-jacking:** Evaluation framework (velocity + brand fit + risk + execution time)
+- **Brand-meme calibration:** Maps voice archetype to appropriate meme styles
+- **Universal rule:** If you have to explain the meme, it failed. Start over.
 
 ---
 
 ## The Psychology Engine
-
-This skill is built on a research-backed framework combining:
 
 ### Core Theories
 | Theory | How It's Used |
@@ -170,9 +212,8 @@ This skill is built on a research-backed framework combining:
 | **Relationship Marketing Theory** | Designs for loyalty + emotional brand bonding |
 
 ### The 25 Psychological Triggers
-The core of the scoring engine. Five categories:
 
-**Social Triggers:** Social Proof · Authority · Liking · Unity · Bandwagon Effect
+**Social:** Social Proof · Authority · Liking · Unity · Bandwagon Effect
 
 **Scarcity & Urgency:** Scarcity · Urgency · FOMO · Exclusivity
 
@@ -183,17 +224,6 @@ The core of the scoring engine. Five categories:
 **Motivation:** Reciprocity · Commitment & Consistency · Progress Effect · Personalization · Identity Signaling
 
 → Full reference: [`docs/psychology-framework.md`](docs/psychology-framework.md)
-
-### Narrative Frameworks
-| Framework | Best For |
-|---|---|
-| AIDA | Short posts, ads, email subjects |
-| PAS | Landing pages, product content |
-| StoryBrand | Brand narrative, launch content |
-| The Contrarian | Thought leadership, viral posts |
-| The Data Drop | Authority content |
-| Before/After/Bridge | Transformation content |
-| The Confession | Trust-building content |
 
 ---
 
@@ -216,45 +246,57 @@ Scores below 35/60 are flagged as "do not publish without significant revision."
 
 ---
 
-## Quality Gates
+## Quality Gates (All Specialists)
 
-Every variant must pass 5 gates before inclusion in the output:
+Before finalizing any output, every specialist runs these checks:
 
-**3-Brain Test**
-- [ ] Emotional brain: Does it make the reader *feel* something specific?
-- [ ] Social brain: Does it reference others, norms, or tribe signals?
-- [ ] Rational brain: Does it give the reader something real and useful?
+- **3-Brain Test:** Emotional + Social + Rational brain all activated?
+- **Hook Test:** First line stops scroll without context?
+- **Identity Signal Test:** "Sharing this tells the world I am ___" — completable?
+- **Fogg Test:** Motivation + Ability + Trigger all present?
+- **Brand Fidelity Test:** Remove brand name — still sounds like them?
+- **Format Test:** Native to the channel, not just resized?
 
-**Hook Test**
-- [ ] Does the first line stop scroll without context?
-- [ ] Would someone screenshot just the first line?
-- [ ] Does it create a curiosity gap or deliver a surprise?
+---
 
-**Identity Signal Test**
-- [ ] Can you complete: "Sharing this tells the world I am ___"?
-- [ ] Is that identity signal something the audience *wants* to project?
+## Repository Structure
 
-**Fogg Completeness Test**
-- [ ] Motivation present?
-- [ ] Ability present? (CTA is simple + frictionless)
-- [ ] Trigger present? (reason to act NOW)
+```
+grovio-content-skill/
+├── README.md
+├── LICENSE                              ← MIT
+│
+├── skills/                              ← Install these to ~/.claude/skills/
+│   ├── grovio-content/
+│   │   └── SKILL.md                     ← Master orchestrator (brand intelligence + routing)
+│   ├── grovio-social/
+│   │   └── SKILL.md                     ← Social posts, threads, carousels
+│   ├── grovio-ads/
+│   │   └── SKILL.md                     ← Ad copy (Google, Meta, LinkedIn, YouTube)
+│   ├── grovio-email/
+│   │   └── SKILL.md                     ← Email sequences + newsletters
+│   ├── grovio-video/
+│   │   └── SKILL.md                     ← Video scripts (Reels, TikTok, YouTube)
+│   └── grovio-meme/
+│       └── SKILL.md                     ← Memes + viral content
+│
+├── docs/
+│   ├── psychology-framework.md          ← Full 25 triggers + all frameworks reference
+│   └── platform-guide.md               ← Platform-specific content rules
+│
+└── examples/
+    └── maruti-suzuki-linkedin/
+        ├── README.md                    ← Context and walkthrough
+        └── output.md                   ← Full generated output (49/60)
+```
 
-**Brand Fidelity Test**
-- [ ] Remove the brand name — would you still know who wrote this?
-- [ ] Does it use their vocabulary fingerprint?
-- [ ] Does it avoid their off-limits language?
+> **Note:** The legacy `skill/SKILL.md` file is kept for backward compatibility. New installations should use the `skills/` directory.
 
 ---
 
 ## Example Output
 
-See a real run on **Maruti Suzuki → LinkedIn Thought Leadership**:
-
-- [`examples/maruti-suzuki-linkedin/output.md`](examples/maruti-suzuki-linkedin/output.md)
-
-Includes full brand intelligence brief, audience psychology map, 5 variants, scoring matrix, and next content angle pipeline.
-
-**Top scoring variant (49/60):**
+**Maruti Suzuki → LinkedIn Thought Leadership** (49/60):
 
 > *India will not electrify the way the headlines say it will.*
 >
@@ -264,32 +306,24 @@ Includes full brand intelligence brief, audience psychology map, 5 variants, sco
 > *→ CNG outsells EVs in India 4:1*
 > *→ Public charging covers less than 12% of India's districts...*
 
----
+**Grovio AI → LinkedIn Thought Leadership** (52/60 — highest ever produced):
 
-## Platform Coverage
+> *Most companies are using AI to do old marketing faster.*
+>
+> *That's the wrong race.*
 
-| Platform | Hook Rules | Length | Best Formats |
-|---|---|---|---|
-| LinkedIn | Scroll-stopping first line, no "excited to share" | 800-1300 chars | Contrarian, Data Drop, Story |
-| Twitter/X | Hook = entire post | 240 chars / threads | Prediction, Contradiction, Number |
-| Instagram | First line before "more" | 125-500 chars | Story, Visual-forward, Save-worthy |
-| Email | Trigger in subject line (6-8 words) | 150-600 words | PAS, curiosity gap, single CTA |
-| Blog | Keyword + power word + promise | 1,500-2,500 words | Ultimate guide, Data-driven, How-to |
-
-→ Full rules: [`docs/platform-guide.md`](docs/platform-guide.md)
+→ Full outputs: [`examples/maruti-suzuki-linkedin/output.md`](examples/maruti-suzuki-linkedin/output.md)
 
 ---
 
 ## Built On
 
-This skill is powered by:
 - **Claude Code** (Anthropic) — AI execution engine
 - **XPOZ MCP Connector** — social media data (Twitter, Instagram)
-- **Firecrawler API** — website crawling
+- **WebFetch** — website crawling
 - **WebSearch** — real-time trend intelligence
 
-The psychology framework is built on research from:
-Kahneman, Cialdini, Tversky, Fogg, Deci & Ryan, Petty & Cacioppo, and the broader behavioral economics + neuromarketing literature.
+Psychology framework built on research from: Kahneman, Cialdini, Tversky, Fogg, Deci & Ryan, Petty & Cacioppo, and the broader behavioral economics + neuromarketing literature.
 
 ---
 
@@ -301,7 +335,7 @@ MIT License — free to use, modify, and distribute. See [`LICENSE`](LICENSE).
 
 ## Made by Grovio
 
-[Grovio](https://grovio.ai) is an AI-powered marketing execution platform for startups and brands.
+[Grovio](https://grovio.ai) is an AI-native marketing operating system for startups and brands.
 
 > "We don't just write content. We engineer behavior."
 
