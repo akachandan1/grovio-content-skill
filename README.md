@@ -39,36 +39,65 @@ Hit 1 = ignored. Hit 2 = engaged. Hit all 3 = shared.
 
 ---
 
-## Architecture: Path B — Master Orchestrator + Specialist Sub-Skills
+## Architecture: Master Orchestrator + 13 Specialist Sub-Skills
 
-Version 2 introduces a **routing architecture**. The master skill detects your content type and activates the right specialist engine — each with deep, format-native knowledge.
+The master skill detects your content type and activates the right specialist engine — each with deep, format-native knowledge.
 
 ```
 /grovio-content  ←── Master Orchestrator
-    │                 Brand intelligence + auto-routing
+    │                 Brand intelligence + brand memory + auto-routing
     │
-    ├── /grovio-social   ←── Social posts, threads, carousels
-    │                        LinkedIn · Twitter/X · Instagram · Threads
-    │                        Brand voice vs Founder voice distinction
+    ├── /grovio-social        ←── Social posts, threads, carousels
+    │                              LinkedIn · Twitter/X · Instagram · Threads
+    │                              Brand voice vs Founder voice distinction
     │
-    ├── /grovio-ads      ←── Paid advertising copy
-    │                        Google Search · Meta · LinkedIn Ads · YouTube
-    │                        TOF / MOF / BOF / Retargeting logic
-    │                        Platform character limits enforced
+    ├── /grovio-ads           ←── Paid advertising copy
+    │                              Google Search · Meta · LinkedIn Ads · YouTube
+    │                              TOF / MOF / BOF / Retargeting logic
     │
-    ├── /grovio-email    ←── Email & newsletter content
-    │                        Cold outreach · Nurture sequences · Newsletters
-    │                        Welcome · Re-engagement · Conversion emails
+    ├── /grovio-email         ←── Email & newsletter content
+    │                              Cold outreach · Nurture sequences · Newsletters
+    │                              Welcome · Re-engagement · Conversion emails
     │
-    ├── /grovio-video    ←── Video scripts
-    │                        Reels · TikTok · YouTube Shorts · LinkedIn Video
-    │                        YouTube long-form · Pre-roll
-    │                        Timestamp-by-timestamp format
+    ├── /grovio-video         ←── Video scripts
+    │                              Reels · TikTok · YouTube Shorts · LinkedIn Video
+    │                              YouTube long-form · Pre-roll (timestamp format)
     │
-    └── /grovio-meme     ←── Memes & viral content
-                             Classic format library (Drake, Expanding Brain, etc.)
-                             Text-only viral posts · Trend-jacking framework
-                             Brand-meme voice calibration
+    ├── /grovio-meme          ←── Memes & viral content
+    │                              Classic format library · Text-only viral
+    │                              Trend-jacking · Brand-meme voice calibration
+    │
+    ├── /grovio-seo           ←── Blog, pillar pages & GEO content
+    │                              Blog posts · Pillar pages · Comparison posts
+    │                              GEO optimization for AI search citation
+    │
+    ├── /grovio-landing       ←── Landing page & conversion copy
+    │                              Hero sections · Full landing pages
+    │                              CTA hierarchy · Pricing page psychology
+    │
+    ├── /grovio-repurpose     ←── Cross-channel content adaptation
+    │                              Blog → 8 formats · Video → clips
+    │                              Content multiplier without copy-paste
+    │
+    ├── /grovio-messaging     ←── WhatsApp, SMS & push notifications
+    │                              WhatsApp Business sequences · SMS (160 char)
+    │                              Push notifications · In-app messages
+    │
+    ├── /grovio-community     ←── Reddit, Discord, Product Hunt & community
+    │                              Reddit posts (anti-promo rules enforced)
+    │                              Product Hunt launch playbook · Discord format
+    │
+    ├── /grovio-analyze       ←── Content performance intelligence
+    │                              Engagement pattern analysis · Hook audit
+    │                              Trigger effectiveness map · Feedback loop
+    │
+    ├── /grovio-pr            ←── Press releases & earned media
+    │                              Press releases · Media pitch emails
+    │                              Byline pitches · Podcast pitches
+    │
+    └── /grovio-brand-memory  ←── Persistent brand intelligence
+                                   Save/load brand profiles across sessions
+                                   Skip re-crawling · Brand history log
 ```
 
 ---
@@ -237,8 +266,16 @@ Claude remembers all the brand intelligence from the skill run — follow-up pro
 | `email`, `newsletter`, `nurture`, `sequence`, `drip` | email, newsletter, onboarding, re-engagement | **grovio-email** |
 | `reels`, `tiktok`, `youtube-shorts`, `video` | video, script, reel, short-form | **grovio-video** |
 | `meme`, `viral`, `meme-content` | meme, viral, humor, trending format | **grovio-meme** |
+| `blog`, `seo`, `pillar`, `article`, `geo` | blog, SEO, GEO, long-form, pillar page | **grovio-seo** |
+| `landing`, `hero`, `cta`, `conversion` | landing page, hero copy, CTA, pricing | **grovio-landing** |
+| `repurpose`, `adapt`, `remix` | repurpose, adapt, transform, reformat | **grovio-repurpose** |
+| `whatsapp`, `sms`, `push`, `messaging` | WhatsApp, SMS, push notification | **grovio-messaging** |
+| `reddit`, `discord`, `producthunt`, `community` | Reddit, Discord, Product Hunt, community | **grovio-community** |
+| `analyze`, `audit`, `performance` | content audit, performance, what's working | **grovio-analyze** |
+| `pr`, `press`, `media`, `pitch` | press release, media pitch, byline | **grovio-pr** |
+| `brand-memory`, `memory` | save brand, load brand, brand profile | **grovio-brand-memory** |
 
-**Goal keyword auto-detection:** The master skill also reads your goal text — "ad copy", "newsletter", "video script", "meme" — and routes correctly even if the platform argument is ambiguous.
+**Goal keyword auto-detection:** The master skill reads your goal text and routes correctly even if the platform argument is ambiguous.
 
 ---
 
@@ -292,6 +329,62 @@ One of the most important distinctions in social content:
 - **Trend-jacking:** Evaluation framework (velocity + brand fit + risk + execution time)
 - **Brand-meme calibration:** Maps voice archetype to appropriate meme styles
 - **Universal rule:** If you have to explain the meme, it failed. Start over.
+
+### `/grovio-seo` — Blog, Pillar Pages & GEO Content
+- **Formats:** Blog post (1,200-2,500w) · Pillar page (2,500-5,000w) · Comparison post · Listicle · FAQ/glossary
+- **GEO optimization:** Answer-first structure for AI citation (ChatGPT, Perplexity, Google AI Overviews)
+- **Keyword brief:** Volume, difficulty, SERP intent, gap to exploit, secondary keywords
+- **Content cluster strategy:** Pillar + 5-8 cluster posts with internal linking map
+- **SEO checklist:** Per-article verification of keyword placement, schema, links
+
+### `/grovio-landing` — Landing Page & Conversion Copy
+- **Assets:** Hero section · Full landing page · Pricing page · Feature page · Coming soon/waitlist
+- **Hero formula:** H1 (outcome) + Sub-headline + Primary CTA + Secondary CTA + Social proof signal
+- **CTA psychology:** First-person possessive, verb-forward, friction reduction
+- **Pricing psychology:** Decoy pricing, anchoring, annual/monthly toggle, risk removal placement
+- **A/B test recommendations:** Top 2 elements to split test per page
+
+### `/grovio-repurpose` — Cross-Channel Content Adaptation
+- **Source formats:** Blog post, video, podcast, newsletter, Twitter thread, case study, data/research
+- **Output formats:** LinkedIn post, Twitter thread, newsletter section, video script, carousel, TikTok, email story, FAQ
+- **Content multiplier:** 1 blog post → 8 pieces of content (social + email + video + evergreen)
+- **Platform-native rules:** Rewrite logic per platform, not resize logic
+
+### `/grovio-messaging` — WhatsApp, SMS & Push Notifications
+- **WhatsApp:** Promotional, transactional, conversational sequences (1,024 char)
+- **SMS:** Marketing and transactional (160 char — character count enforced)
+- **Push notifications:** Title (50 char) + Body (100 char) with CTR-optimized formulas
+- **In-app messages:** Banner and modal formats with "help not marketing" principle
+- **Sequence architecture:** WhatsApp onboarding (5-message sequence with day/trigger map)
+
+### `/grovio-community` — Reddit, Discord & Product Hunt
+- **Reddit:** Anti-promotional rules enforced · Community-native post types · Subreddit selection guide
+- **Product Hunt:** Launch day playbook · Tagline (60 char) · Maker first comment · Supporter outreach
+- **Discord:** Announcement format with Discord markdown · Channel strategy
+- **Indie Hackers / Hacker News:** Transparency-first formats · Building-in-public post structure
+- **Comment strategy:** Building authority through comments, not just posts
+
+### `/grovio-analyze` — Content Performance Intelligence
+- **Engagement pattern analysis:** Top 20% vs bottom 20% performer extraction
+- **Hook effectiveness audit:** Which hook types convert per platform
+- **Trigger effectiveness map:** Which psychological triggers are actually working
+- **Email performance audit:** Subject line patterns, CTR analysis, unsubscribe triggers
+- **Feedback loop protocol:** Collect → Sort → Pattern → Insight → Test → Feed forward
+
+### `/grovio-pr` — Press Releases & Earned Media
+- **News hook tiers:** Tier 1 (data) → Tier 4 (milestone) — tier assessment before writing
+- **Press release:** Lead paragraph structure, quote rules, embargo strategy
+- **Media pitch email:** 5-7 sentences, personalized line 1, journalist-first angle
+- **Contributed article / byline pitch:** Outline format for trade publication pitches
+- **Podcast pitch:** Guest pitch email with 3 episode title options
+- **Coverage likelihood scoring:** Per asset, per publication
+
+### `/grovio-brand-memory` — Persistent Brand Intelligence
+- **Save:** Store complete brand profile to `~/.claude/brands/[slug]/brand-memory.md`
+- **Load:** Retrieve profile in future sessions — skip web re-crawl
+- **Staleness detection:** Flags profiles >90 days old for refresh
+- **Campaign log:** Automatic history of all content generated through the system
+- **Compare:** Side-by-side brand DNA comparison for competitive positioning
 
 ---
 
@@ -372,8 +465,24 @@ grovio-content-skill/
 │   │   └── SKILL.md                     ← Email sequences + newsletters
 │   ├── grovio-video/
 │   │   └── SKILL.md                     ← Video scripts (Reels, TikTok, YouTube)
-│   └── grovio-meme/
-│       └── SKILL.md                     ← Memes + viral content
+│   ├── grovio-meme/
+│   │   └── SKILL.md                     ← Memes + viral content
+│   ├── grovio-seo/
+│   │   └── SKILL.md                     ← Blog, pillar pages, GEO optimization
+│   ├── grovio-landing/
+│   │   └── SKILL.md                     ← Landing pages, hero copy, CTA hierarchy
+│   ├── grovio-repurpose/
+│   │   └── SKILL.md                     ← Cross-channel content adaptation
+│   ├── grovio-messaging/
+│   │   └── SKILL.md                     ← WhatsApp, SMS, push notifications
+│   ├── grovio-community/
+│   │   └── SKILL.md                     ← Reddit, Discord, Product Hunt
+│   ├── grovio-analyze/
+│   │   └── SKILL.md                     ← Content performance intelligence
+│   ├── grovio-pr/
+│   │   └── SKILL.md                     ← Press releases, media pitches
+│   └── grovio-brand-memory/
+│       └── SKILL.md                     ← Persistent brand intelligence across sessions
 │
 ├── docs/
 │   ├── psychology-framework.md          ← Full 25 triggers + all frameworks reference

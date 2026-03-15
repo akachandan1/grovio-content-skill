@@ -21,6 +21,15 @@ You are the **router and brand intelligence layer**. You gather deep brand conte
 /grovio-content https://figma.com meme design-culture
 /grovio-content https://vercel.com reels product-demo --voice founder
 /grovio-content https://hubspot.com email nurture-sequence
+/grovio-content https://grovio.ai blog ai-marketing-os
+/grovio-content https://stripe.com landing free-trial-campaign
+/grovio-content https://linear.app repurpose blog-to-linkedin
+/grovio-content https://notion.so whatsapp onboarding-sequence
+/grovio-content https://grovio.ai reddit product-launch
+/grovio-content https://grovio.ai analyze twitter-performance
+/grovio-content https://grovio.ai pr product-launch-press-release
+/grovio-brand-memory save grovio
+/grovio-brand-memory load stripe
 ```
 
 **Voice flag (default: auto-detect):**
@@ -43,12 +52,28 @@ Before doing anything else, read the platform/type argument and goal, and determ
 | `email`, `newsletter`, `nurture`, `sequence`, `drip` | email, newsletter, sequence, onboarding | **grovio-email** |
 | `reels`, `tiktok`, `youtube-shorts`, `video`, `shorts` | video, script, reel, short-form video | **grovio-video** |
 | `meme`, `viral`, `meme-content` | meme, viral, humor, culture, trending format | **grovio-meme** |
+| `blog`, `seo`, `pillar`, `article`, `geo` | blog post, SEO, GEO, long-form, pillar page | **grovio-seo** |
+| `landing`, `landing-page`, `hero`, `cta`, `conversion` | landing page, hero copy, CTA, pricing page | **grovio-landing** |
+| `repurpose`, `adapt`, `cross-channel`, `remix` | repurpose, adapt, transform, reformat | **grovio-repurpose** |
+| `whatsapp`, `sms`, `push`, `in-app`, `messaging` | WhatsApp, SMS, push notification, in-app message | **grovio-messaging** |
+| `reddit`, `discord`, `producthunt`, `community`, `hn` | Reddit, Discord, Product Hunt, community post | **grovio-community** |
+| `analyze`, `audit`, `performance`, `report` | content audit, performance analysis, what's working | **grovio-analyze** |
+| `pr`, `press`, `media`, `pitch`, `journalist` | press release, media pitch, byline, podcast pitch | **grovio-pr** |
+| `brand-memory`, `memory`, `save-brand`, `load-brand` | save brand, load brand, brand profile | **grovio-brand-memory** |
 
 **Goal keyword detection (when platform is ambiguous):**
 - Contains "ad", "ads", "paid", "campaign", "convert" → **grovio-ads**
 - Contains "newsletter", "email", "sequence", "drip" → **grovio-email**
 - Contains "reel", "video", "script", "tiktok", "short" → **grovio-video**
 - Contains "meme", "viral", "funny", "format", "trending" → **grovio-meme**
+- Contains "blog", "seo", "pillar", "article", "geo", "rank" → **grovio-seo**
+- Contains "landing", "hero", "cta", "conversion", "pricing page" → **grovio-landing**
+- Contains "repurpose", "adapt", "remix", "cross-channel" → **grovio-repurpose**
+- Contains "whatsapp", "sms", "push", "in-app", "notification" → **grovio-messaging**
+- Contains "reddit", "discord", "product hunt", "community" → **grovio-community**
+- Contains "analyze", "audit", "performance", "what's working" → **grovio-analyze**
+- Contains "press", "pr", "media", "journalist", "pitch", "podcast guest" → **grovio-pr**
+- Contains "save brand", "load brand", "brand memory", "remember brand" → **grovio-brand-memory**
 - Default for `linkedin`, `twitter`, `instagram` → **grovio-social**
 
 **Announce routing before proceeding:**
