@@ -39,7 +39,7 @@ Hit 1 = ignored. Hit 2 = engaged. Hit all 3 = shared.
 
 ---
 
-## Architecture: Master Orchestrator + 22 Specialist Skills
+## Architecture: Master Orchestrator + 28 Specialist Skills
 
 ```
 /content  ←── Master Orchestrator
@@ -108,9 +108,27 @@ Hit 1 = ignored. Hit 2 = engaged. Hit all 3 = shared.
     ├── /gtm           ←── Go-to-market launch content
     │                       Full launch kit: Day -14 → Day 0 → Day +14
     │
-    └── /nuromark      ←── Neuroscience scoring engine
-                            TRIBE v2 research (Meta FAIR) · 50-pt NeuroScore
-                            Auto-invokes on all content-generating skills
+    ├── /nuromark      ←── Neuroscience scoring engine
+    │                       TRIBE v2 research (Meta FAIR) · 50-pt NeuroScore
+    │                       Auto-invokes on all content-generating skills
+    │
+    ├── /brand-context ←── Project-scoped brand intelligence
+    │                       Saves to .claude/brand-context.md · Team-friendly · Version-controlled
+    │
+    ├── /cro           ←── Conversion rate optimization
+    │                       3-Brain Conversion Audit · Fogg model page analysis · Element-level rewrite
+    │
+    ├── /retention     ←── Churn prevention psychology engine
+    │                       Cancel flow design · Save offers · Dunning sequence · Win-back campaign
+    │
+    ├── /pricing       ←── Pricing psychology engine
+    │                       Anchoring · Decoy tier · Loss aversion copy · Upgrade flow psychology
+    │
+    ├── /funnel        ←── Funnel psychological friction mapper
+    │                       8-stage funnel map · Drop-off diagnosis · Activation gap · Fix priority stack
+    │
+    └── /compete       ←── Competitor intelligence engine
+                            Trigger whitespace map (all 25) · Positioning gap · vs-page copy
 ```
 
 ---
@@ -240,6 +258,12 @@ Claude remembers all brand intelligence from the skill run — follow-up prompts
 | `brief`, `handoff` | content brief, writer brief, agency brief | **/brief** |
 | `ab-test`, `experiment`, `split-test` | A/B test design, hypothesis, experiment | **/ab-test** |
 | `gtm`, `launch`, `product-launch` | go-to-market, launch kit, waitlist | **/gtm** |
+| `brand-context`, `setup-brand`, `project-context` | brand intelligence file, team-shared context | **/brand-context** |
+| `cro`, `conversion`, `hero`, `signup-flow`, `onboarding-flow` | CRO audit, page rewrite, why isn't this converting | **/cro** |
+| `retention`, `churn`, `cancel-flow`, `dunning`, `win-back` | churn prevention, save offer, re-engagement | **/retention** |
+| `pricing`, `pricing-page`, `tier-design`, `upgrade-copy` | pricing psychology, plan names, anchor design | **/pricing** |
+| `funnel`, `funnel-analysis`, `drop-off`, `activation` | funnel map, drop-off diagnosis, trial to paid | **/funnel** |
+| `compete`, `competitor`, `vs-page`, `whitespace` | competitor analysis, positioning gap, versus page | **/compete** |
 
 ---
 
@@ -293,6 +317,28 @@ Before finalizing any output, every skill runs these checks:
 - **Fogg Test:** Motivation + Ability + Trigger all present?
 - **Brand Fidelity Test:** Remove brand name — still sounds like them?
 - **Format Test:** Native to the channel, not just resized?
+
+---
+
+## New Skills (v3) — Operational Psychology Layer
+
+### `/brand-context` — Project-Scoped Brand Intelligence
+Saves brand psychological profile to `.claude/brand-context.md` inside your project repo — not machine-specific. Travels with the codebase, version-controlled, accessible to all teammates. All NuroMark skills load it first so they never re-crawl a brand you've already analyzed. Includes psychological trigger profile: Owned / Underused / Unclaimed triggers with verbatim copy evidence.
+
+### `/cro` — 3-Brain Conversion Audit
+Applies the 3-brain model to every element of a page: hero, pricing, signup flow, onboarding. Diagnoses which brain (emotional/social/rational) is blocked at each stage. Outputs element-level rewrite package with Fogg model check on every CTA and a/b test recommendations ranked by lift potential. Psychological score /60 + NuroMark on hero section.
+
+### `/retention` — Churn Prevention Psychology Engine
+Designs cancel flows, save offer libraries, dunning sequences, and win-back campaigns using loss aversion, commitment-consistency, and reciprocity. Key principle: one save offer per flow (multiple offers signal desperation). Save offer psychology score /50. Covers voluntary churn, involuntary churn (dunning), and proactive at-risk detection.
+
+### `/pricing` — Pricing Psychology Engine
+Audits and redesigns pricing pages using anchoring, decoy pricing, loss aversion, cognitive fluency, and social proof. Includes full tier architecture design (Entry/Target/Anchor model), upgrade flow copy with loss framing, and annual vs monthly framing guidance. Key rule: "Get 2 months free" outperforms "Save 17%" — concrete beats percentage. Pricing psychology score /60.
+
+### `/funnel` — Psychological Friction Mapper
+Maps all 8 funnel stages (Aware → Interested → Considering → Trial → Activated → Retained → Paid → Advocate) with psychological friction diagnosis at each stage. Identifies the activation gap — the distance between signup and first value moment — and produces a Fix Priority Stack ranked by impact × ease × speed.
+
+### `/compete` — Competitor Intelligence Engine
+Profiles competitors using their messaging, trigger stack, and emotional position. Builds a Trigger Whitespace Map across all 25 psychological triggers to find what nobody in the market is owning. Outputs: Positioning Whitespace Analysis (taken/contested/available positions), Versus Page copy structure, and Content Whitespace (topics nobody is creating).
 
 ---
 
@@ -378,7 +424,13 @@ nuromark-skills/
 │   ├── brief/SKILL.md         ← New v2
 │   ├── ab-test/SKILL.md       ← New v2
 │   ├── gtm/SKILL.md           ← New v2
-│   └── nuromark/SKILL.md      ← New v2 — neuroscience scorer
+│   ├── nuromark/SKILL.md      ← New v2 — neuroscience scorer
+│   ├── brand-context/SKILL.md ← New v3
+│   ├── cro/SKILL.md           ← New v3
+│   ├── retention/SKILL.md     ← New v3
+│   ├── pricing/SKILL.md       ← New v3
+│   ├── funnel/SKILL.md        ← New v3
+│   └── compete/SKILL.md       ← New v3
 │
 ├── docs/
 │   ├── psychology-framework.md
