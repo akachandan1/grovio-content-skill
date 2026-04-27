@@ -75,6 +75,12 @@ Before doing anything else, read the platform/type argument and goal, and determ
 | `brief`, `content-brief`, `writing-brief`, `delegate` | content brief, writer handoff, writing spec, delegate to team | **brief** |
 | `ab-test`, `split-test`, `experiment`, `test-hypothesis` | A/B test, split test, content experiment, which version | **ab-test** |
 | `launch`, `gtm`, `product-launch`, `waitlist`, `beta` | product launch, feature announcement, waitlist, go-to-market | **gtm** |
+| `cro`, `conversion`, `landing-page`, `hero`, `signup-flow`, `onboarding-flow` | CRO audit, page rewrite, hero section, why isn't this converting | **cro** |
+| `retention`, `churn`, `cancel-flow`, `dunning`, `win-back` | churn prevention, cancel flow, save offer, failed payment, re-engagement | **retention** |
+| `pricing`, `pricing-page`, `tier-design`, `upgrade-copy` | pricing psychology, plan names, anchor design, upgrade flow | **pricing** |
+| `funnel`, `funnel-analysis`, `drop-off`, `activation`, `customer-journey` | funnel map, drop-off diagnosis, activation gap, where are people leaving | **funnel** |
+| `compete`, `competitor`, `vs-page`, `whitespace`, `differentiation` | competitor analysis, positioning gap, versus page, trigger whitespace | **compete** |
+| `brand-context`, `setup-brand`, `project-context` | set up brand context, create brand file, update brand context | **brand-context** |
 
 **Goal keyword detection (when platform is ambiguous):**
 - Contains "ad", "ads", "paid", "convert" → **ads**
@@ -97,6 +103,12 @@ Before doing anything else, read the platform/type argument and goal, and determ
 - Contains "brief", "content brief", "write for", "handoff", "delegate" → **brief**
 - Contains "a/b test", "split test", "test hypothesis", "which version", "experiment" → **ab-test**
 - Contains "launch", "gtm", "product launch", "waitlist", "beta launch", "go-to-market" → **gtm**
+- Contains "cro", "conversion rate", "why isn't converting", "hero section", "signup drop", "onboarding friction" → **cro**
+- Contains "churn", "cancel", "retention", "dunning", "win-back", "people leaving" → **retention**
+- Contains "pricing", "price", "tier", "plan names", "upgrade", "decoy", "anchor" → **pricing**
+- Contains "funnel", "drop-off", "activation", "where are people leaving", "trial to paid" → **funnel**
+- Contains "competitor", "vs ", "versus", "whitespace", "differentiation", "positioning gap" → **compete**
+- Contains "brand context", "setup brand", "project context", "brand file" → **brand-context**
 - Default for `linkedin`, `twitter`, `instagram` → **social**
 
 **Announce routing before proceeding:**
