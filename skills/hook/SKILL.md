@@ -163,16 +163,16 @@ RECOMMENDATION      [#1 Lead / #2 A/B / Reserve / Skip]
 # Hook Package
 Topic: [topic] | Platform: [platform] | Voice: [brand/founder]
 
-## #1 LEAD HOOK (Score: X/40)
+## 1. LEAD HOOK (Score: X/40)
 [Hook text]
 Why it wins: [2 sentences]
 Trigger: [trigger + mechanism]
 
-## #2 A/B TEST (Score: X/40)
+## 2. A/B TEST (Score: X/40)
 [Hook text]
 Hypothesis: [what this tests vs #1]
 
-## #3-5 RESERVE (Scores: X/40 each)
+## 3-5. RESERVE (Scores: X/40 each)
 [Each hook with type label]
 
 ## Full Hook Set (all 10+)

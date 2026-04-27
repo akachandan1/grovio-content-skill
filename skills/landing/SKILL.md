@@ -236,11 +236,11 @@ Risk removal: [specific line]
 # Landing Page Copy Package
 Brand: [name] | Page: [type] | Goal: [conversion goal]
 
-## #1 RECOMMENDED VERSION
+## 1. RECOMMENDED VERSION
 [Full copy — hero through CTA]
 Why this converts: [1-2 sentences]
 
-## #2 ALTERNATIVE HERO
+## 2. ALTERNATIVE HERO
 [Just the hero section — different headline + CTA approach]
 
 ## CTA Testing Suite

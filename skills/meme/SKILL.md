@@ -326,15 +326,15 @@ RECOMMENDATION      [Post Now / A/B / Schedule / Skip]
 # Meme & Viral Content Package
 Brand: [name] | Platform: [platform] | Topic: [topic]
 
-## #1 POST NOW (Score: X/60)
+## 1. POST NOW (Score: X/60)
 [Full meme output]
 Why this wins: [1-2 sentences]
 Execution: [what tool to use — Canva template / screenshot / text post]
 
-## #2 A/B TEST (Score: X/60)
+## 2. A/B TEST (Score: X/60)
 [Full meme output]
 
-## #3 RESERVE (Score: X/60)
+## 3. RESERVE (Score: X/60)
 [Full meme output]
 When to use: [trigger event or timing]
 

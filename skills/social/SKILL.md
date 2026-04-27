@@ -317,15 +317,15 @@ RECOMMENDATION      [rank: #1 Publish / #2 A/B / Reserve / Skip]
 # Social Content Package
 Brand: [name] | Platform: [platform] | Voice: [brand/founder] | Goal: [goal]
 
-## #1 PUBLISH (Score: X/60)
+## 1. PUBLISH (Score: X/60)
 [Full content]
 Why this wins: [2-3 sentences]
 
-## #2 A/B TEST (Score: X/60)
+## 2. A/B TEST (Score: X/60)
 [Full content]
 Hypothesis: [what this tests vs #1]
 
-## #3 RESERVE (Score: X/60)
+## 3. RESERVE (Score: X/60)
 [Full content]
 When to use: [specific trigger scenario]
 

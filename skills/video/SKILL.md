@@ -276,10 +276,10 @@ RECOMMENDATION      [Shoot / A/B Hook / Hold]
 # Video Script Package
 Brand: [name] | Platform: [platform] | Duration: [length] | Goal: [goal]
 
-## #1 RECOMMENDED SCRIPT
+## 1. RECOMMENDED SCRIPT
 [Full script with all timestamps and visual notes]
 
-## #2 ALTERNATIVE HOOK VARIANTS
+## 2. ALTERNATIVE HOOK VARIANTS
 [2-3 alternative first-5-seconds only — for hook A/B testing]
 
 ## Thumbnail Concepts
