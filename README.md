@@ -1,4 +1,4 @@
-# Grovio Content Skill
+# Nuro Mark Content Skill
 
 > **The world's most psychologically advanced brand content engine for Claude Code.**
 > Combines consumer psychology, behavioral economics, persuasion science, and neuromarketing to generate content that engineers behavior — not just publishes words.
